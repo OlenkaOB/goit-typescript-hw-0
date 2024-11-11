@@ -1,7 +1,13 @@
-import ErrorMessage from './ErrorMessage.module.css';
+import s from './ErrorMessage.module.css';
 
-const ErrorMessage = () => {
-  return <></>;
+const ErrorMessage = ({}) => {
+  return (
+    <>
+      <div>
+        <p>hello</p>
+      </div>
+    </>
+  );
 };
 
 export default ErrorMessage;
