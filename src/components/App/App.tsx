@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchImages } from '../../services/Api';
 import ImageGallery from '../ImageGallery/ImageGallery';
