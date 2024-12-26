@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import s from './ImageModal.module.css';
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
 import { ImageData } from '../App/App.types';
 
 interface ImageModalProps {
-  image: ImageData;
+  image: ImageData | null;
   onClose: () => void;
 }
 
@@ -19,7 +19,7 @@ const ImageModal: FC<ImageModalProps> = ({ image, onClose }) => {
     likes,
   } = image;
   return (
-    <ReactModal
+    <Modal
       isOpen={!!image}
       onRequestClose={onClose}
       contentLabel="Image Modal"
@@ -33,7 +33,7 @@ const ImageModal: FC<ImageModalProps> = ({ image, onClose }) => {
         <p>Author: {name}</p>
         <p>Likes: {likes} </p>
       </div>
-    </ReactModal>
+    </Modal>
   );
 };
 export default ImageModal;

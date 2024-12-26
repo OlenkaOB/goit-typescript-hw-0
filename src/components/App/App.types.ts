@@ -5,7 +5,7 @@ export interface ImageData {
     regular: string;
   };
   alt_description: string;
-  users: {
+  user: {
     name: string;
   };
   likes: number;
