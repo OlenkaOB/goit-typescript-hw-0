@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import s from './LoadMoreBtn.module.css';
 
 interface LoadMoreBtnProps {
@@ -6,7 +6,7 @@ interface LoadMoreBtnProps {
   isLoading: boolean;
 }
 
-const LoadMoreBtn = ({ onPage, isLoading }) => {
+const LoadMoreBtn: FC<LoadMoreBtnProps> = ({ onPage, isLoading }) => {
   return (
     <div>
       <button className={s.loadBtn} onClick={onPage} type="button" disabled={isLoading}>

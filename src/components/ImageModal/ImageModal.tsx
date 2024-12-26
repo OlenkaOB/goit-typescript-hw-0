@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import s from './ImageModal.module.css';
 import ReactModal from 'react-modal';
+import { ImageData } from '../App/App.types';
 
 interface ImageModalProps {
   image: ImageData;
   onClose: () => void;
 }
 
-const ImageModal = ({ image, onClose }) => {
+const ImageModal: FC<ImageModalProps> = ({ image, onClose }) => {
   if (!image) {
     return null;
   }
