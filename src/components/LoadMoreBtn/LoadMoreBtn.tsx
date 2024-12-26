@@ -1,4 +1,10 @@
+import React from 'react';
 import s from './LoadMoreBtn.module.css';
+
+interface LoadMoreBtnProps {
+  onPage: () => void;
+  isLoading: boolean;
+}
 
 const LoadMoreBtn = ({ onPage, isLoading }) => {
   return (

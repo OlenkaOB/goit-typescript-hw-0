@@ -1,8 +1,13 @@
+import React, { FC, FormEvent } from 'react';
 import s from './SearchBar.module.css';
 import toast from 'react-hot-toast';
 
-const SearchBar = ({ onSubmit }) => {
-  const handleSubmit = e => {
+interface SearchBarProps {
+  onSubmit: (value: string) => void;
+}
+
+const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const inputValue = e.target.elements.searchInput.value.trim();
     if (inputValue === '') {

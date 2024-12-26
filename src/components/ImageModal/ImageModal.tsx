@@ -1,5 +1,11 @@
+import React from 'react';
 import s from './ImageModal.module.css';
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
+
+interface ImageModalProps {
+  image: ImageData;
+  onClose: () => void;
+}
 
 const ImageModal = ({ image, onClose }) => {
   if (!image) {
@@ -12,7 +18,7 @@ const ImageModal = ({ image, onClose }) => {
     likes,
   } = image;
   return (
-    <Modal
+    <ReactModal
       isOpen={!!image}
       onRequestClose={onClose}
       contentLabel="Image Modal"
@@ -26,7 +32,7 @@ const ImageModal = ({ image, onClose }) => {
         <p>Author: {name}</p>
         <p>Likes: {likes} </p>
       </div>
-    </Modal>
+    </ReactModal>
   );
 };
 export default ImageModal;

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchImages } from '../../services/Api';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Loader from '../Loader/Loader';
@@ -7,15 +6,16 @@ import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageModal from '../ImageModal/ImageModal';
+import { ImageData, feachImagesData } from './App.types';
 
 function App() {
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
-  const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [totalPages, setTotalPages] = useState(0);
+  const [query, setQuery] = useState<string>('');
+  const [page, setPage] = useState<number>(1);
+  const [images, setImages] = useState<ImageData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<null | ImageData>(null);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   useEffect(() => {
     if (!query) {
@@ -26,7 +26,7 @@ function App() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const { results, total_pages } = await fetchImages(query, page);
+        const { results, total_pages } = await fetchImages<feachImagesData>(query, page);
         setImages(prev => [...prev, ...results]);
         setTotalPages(total_pages);
       } catch (error) {
@@ -39,7 +39,7 @@ function App() {
     getData();
   }, [query, page]);
 
-  const onSubmit = value => {
+  const onSubmit = (value: string) => {
     setPage(1);
     setImages([]);
     setQuery(value);
@@ -53,8 +53,8 @@ function App() {
     setPage(prev => prev + 1);
   };
 
-  const openModal = image => setSelectedImage(image);
-  const closeModal = () => setSelectedImage(null);
+  const openModal = (image: ImageData): void => setSelectedImage(image);
+  const closeModal = (): void => setSelectedImage(null);
 
   return (
     <div>

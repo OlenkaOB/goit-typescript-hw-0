@@ -3,7 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(82, 82, 211);
+    background-color: rgb(182, 228, 241);
+    background-image: linear-gradient(rgb(94, 151, 165), rgb(146, 147, 150));
     padding: 12px;
 }
 
