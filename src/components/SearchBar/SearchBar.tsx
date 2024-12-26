@@ -9,7 +9,10 @@ interface SearchBarProps {
 const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const inputValue = e.target.elements.searchInput.value.trim();
+    const form = e.target as HTMLFormElement;
+    const input = form.querySelector<HTMLInputElement>('input[name="searchInput"]');
+
+    const inputValue = input?.value.trim() || '';
     if (inputValue === '') {
       toast.error('Please enter the field', {
         style: {
@@ -21,7 +24,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
     }
 
     onSubmit(inputValue);
-    e.target.reset();
+    form.reset();
   };
   return (
     <header className={s.header}>
